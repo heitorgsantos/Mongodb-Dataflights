@@ -1,0 +1,70 @@
+use("dataFlights");
+
+
+  // db.voos.find({"empresa.nome": "AZUL"}, {"litrosCombustivel": {$lt: 400}}).count();
+
+// db.voos.count(); desafio 1
+
+
+// db.voos.find({"empresa.nome": "AZUL"}).limit(10);  desafio 2
+
+// db.voos.count({"empresa.nome": "AZUL"}); desafio 3
+
+
+// db.voos.find({}, {"_id": 0, qty: 9, "vooId":  {$slice: 3 }});
+// db.voos.find({}, {"vooId": 1, "_id": 0}).skip(9).limit(3) desafio 5
+
+// db.voos.find({"vooId":{$eq: 756807 }}, {"_id": 0, "empresa.sigla": 1, "empresa.nome": 1, "passageiros": 1, }); desafio 6
+
+// db.voos.count({"ano": {$lt: 2017}}); desafio 7
+
+// db.voos.count({"ano": {$gt: 2016}}); desafio 8
+
+// db.voos.find({ $or: [{"ano": {$eq: 2017}}, {"ano": {$eq: 2018}}]}).count(); desafio 9 
+
+// db.voos.find({"ano": {$gte: 2017, $lte: 2018}}).count(); desafio 9 simplificado
+
+// db.voos.find({"empresa.nome": "GOL", "ano": 2017}, {"_id": 0, "vooId": 1, 
+// "empresa.nome": 1, "aeroportoOrigem.nome": 1, "aeroportoDestino.nome": 1, "mes": 1, "ano": 1}).limit(10); desafio 10
+
+// db.voos.find({"aeroportoDestino.pais": {$ne: "ESTADOS UNIDOS"}}).count(); desafio 11
+
+// db.voos.find({ $or: [ {"aeroportoDestino.pais": {$eq: "BRASIL"}},
+//  {"aeroportoDestino.pais": {$eq: "ARGENTINA"}},
+//  {"aeroportoDestino.pais": {$eq: "CHILE"}} ]}).count(); desafio 12
+
+// db.voos.find({ $and: [{"aeroportoDestino.continente": {$ne: "EUROPA"}},
+//  {"aeroportoDestino.continente": {$ne: "ÁSIA"}},
+//  {"aeroportoDestino.continente": {$ne: "OCEANIA"}}]}).count(); desafio 13
+
+
+// db.voos.find({"aeroportoOrigem.pais": {$ne: "BRASIL"}}).count(); desafio 14
+
+
+// db.voos.find({"decolagens": {$gt: 20}}).count(); desafio 15
+
+// db.voos.find({"natureza": "Internacional"}).count(); desafio 16
+
+// db.voos.find({"natureza": "Doméstica"}).count(); desafio 17
+
+// db.voos.find({"passageiros.pagos": {$gt: 7000}}, {"_id": 0, "vooId": 1, "mes": 1, "ano": 1}).limit(1); desafio 18
+
+// db.voos.find({"litrosCombustivel": {$exists: true}}, {"_id": 0, "vooId": 1}).limit(1); desafio 19
+
+// db.voos.find({"rtk": {$exists: false}}, {"_id": 0, "vooId": 1}).limit(1); desafio 20
+
+// db.voos.find({"litrosCombustivel": {$gte: 1000}}, {"_id": 0, "vooId": 1}).limit(1); desafio 21
+
+// db.voos.find({ $and: [{"empresa.nome": {$in: ["DELTA AIRLINES", "AMERICAN AIRLINES"]}},
+//   {"aeroportoOrigem.sigla": {$eq: "SBGR"}}, {"aeroportoDestino.sigla": {$eq:"KJFK"}},
+// ],}, {"_id": 0, "vooId": 1}).limit(1); desafio 22
+
+// db.voos.find({ $and: [{"litrosCombustivel": {$lte: 1000}}, {"litrosCombustivel": {$exists: true}}]},
+//   {"_id": 0, "vooId": 1, "litrosCombustivel": 1}).limit(1); desafio 23
+
+// db.voos.find({ $and: [{"litrosCombustivel": {$lte: 600}}, {"empresa.nome": {$nin: ["GOL", "AZUL"]}}, 
+// {"litrosCombustivel": {$exists: true}}]}, {"_id": 0, "vooId": 1, "empresa.nome": 1, "litrosCombustivel": 1} ).limit(1) desafio 24
+
+
+
+// db.voos.deleteMany({ $and: [{"litrosCombustivel": {$lt: 400}}, {"empresa.nome": "AZUL"}]}); desafio 25
